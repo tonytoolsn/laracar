@@ -54,11 +54,13 @@ class SiteController extends Controller
 
     public function successRedirect(Request $request){
         $data = $request->session()->get('data');
-            foreach ($data as $value) {
-            $data = $value;
-            }
-        Order::create($data);
-        $request->session()->flush();
+        if($data){
+          foreach ($data as $value) {
+              $data = $value;
+          }
+          Order::create($data);
+          $request->session()->flush();
+        }
         return redirect()->route('root')->with('msg', '已成功下訂單，請至會員專區查看訂單狀態');
     }
 
