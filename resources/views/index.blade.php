@@ -26,7 +26,7 @@
         <!-- Moment.js v2.20.0 -->
         <script src="{{asset('assets/vendor/calendar/js/moment.min.js') }}"></script>
         <!-- FullCalendar v3.8.1 -->
-        <link href="{{asset('assets/vendor/Calendar/css/fullcalendar.min.css') }}" rel="stylesheet" />
+        <link href="{{asset('assets/vendor/calendar/css/fullcalendar.min.css') }}" rel="stylesheet" />
         <script src="{{asset('assets/vendor/calendar/js/fullcalendar.min.js') }}"></script>
         <link href="{{asset('assets/css/style2.css') }}" rel="stylesheet" />
     <body>
