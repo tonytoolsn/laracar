@@ -15,7 +15,8 @@
         "laravel/framework": "^8.12",
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.2",
-        "tcg/voyager": "^1.4"
+        "tcg/voyager": "^1.4",
+        "treerful/laravel-newebpay": "^1.0"
     },
     "require-dev": {
         "facade/ignition": "^2.5",
