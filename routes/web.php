@@ -28,7 +28,7 @@ Route::group(['namespace' => '\App\Http\Controllers'], function () {
     //當使用者付款成功，藍星將資料導到的位址，是用post
     Route::post('purchases/success','SiteController@@orderSuccess');
     //取消付款導到的頁面，是用get
-    Route::post('purchases/back','SiteController@@back');
+    Route::get('purchases/back','SiteController@@back');
 });
 
 Route::group(['prefix' => 'admin'], function () {
