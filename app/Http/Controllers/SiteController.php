@@ -39,6 +39,8 @@ class SiteController extends Controller
         $request->session()->flush();
         //將表單資料用session()，先存起來
         $request->session()->push('data',$data);
+        $datas = $request->session()->get('data');
+        dd($datas);
 
         $newebpay = new NewebPay();  //使用此物件要記得use
         $deposit=$request->deposit;
@@ -54,6 +56,7 @@ class SiteController extends Controller
 
     public function successRedirect(Request $request){
         $data = $request->session()->get('data');
+        dd($data);
         if($data){
           foreach ($data as $value) {
               $data = $value;
