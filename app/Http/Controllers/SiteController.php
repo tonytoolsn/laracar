@@ -53,8 +53,13 @@ class SiteController extends Controller
 
     //當使用者付款成功時，導到的畫面，是用post
     public function successRedirect(Request $request){
+        return redirect()->route('root')->with('msg', '已付訂金，請至會員專區查看訂單狀態');
+    }
 
-        dd(auth()->id());
+    //藍星金流回傳的資料
+    public function orderSuccess(Request $request){
+        Log::info('app.requests',['request' => $request->all()]);
+
         $updateOrderStatus = User::find(auth()->id())->order->sortByDesc('created_at')->take(1);
         foreach ($updateOrderStatus as $value) {
             $id=$value->id;
@@ -62,12 +67,6 @@ class SiteController extends Controller
 
         Order::find($id)->update(['orderstatus' => '已付訂金']);
 
-        return redirect()->route('root')->with('msg', '已付訂金，請至會員專區查看訂單狀態');
-    }
-
-    //藍星金流回傳的資料
-    public function orderSuccess(Request $request){
-        Log::info('app.requests',['request' => $request->all()]);
         return redirect()->route('root');
     }
 
