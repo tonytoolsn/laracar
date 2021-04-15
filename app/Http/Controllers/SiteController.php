@@ -54,6 +54,7 @@ class SiteController extends Controller
     //當使用者付款成功時，導到的畫面，是用post
     public function successRedirect(Request $request){
 
+        dd(auth()->id());
         $updateOrderStatus = User::find(auth()->id())->order->sortByDesc('created_at')->take(1);
         foreach ($updateOrderStatus as $value) {
             $id=$value->id;
