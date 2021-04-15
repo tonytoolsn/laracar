@@ -23,12 +23,12 @@ Route::group(['namespace' => '\App\Http\Controllers'], function () {
     Route::patch('/update', 'HomeController@update')->name('update');
     Route::post('/order/submit', 'SiteController@orderSubmit')->name('orderSubmit');
     //當使用者付款成功時，導到的畫面，是用post，Controller重導get的success方法
-    Route::post('purchases/successRedirect' ,'SiteController@@successRedirect');
-    Route::get('purchases/success','SiteController@@success');
+    Route::post('purchases/successRedirect' ,'SiteController@successRedirect');
+    Route::get('purchases/success','SiteController@success');
     //當使用者付款成功，藍星將資料導到的位址，是用post
-    Route::post('purchases/success','SiteController@@orderSuccess');
+    Route::post('purchases/success','SiteController@orderSuccess');
     //取消付款導到的頁面，是用get
-    Route::get('purchases/back','SiteController@@back');
+    Route::get('purchases/back','SiteController@back');
 });
 
 Route::group(['prefix' => 'admin'], function () {
