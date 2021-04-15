@@ -36,11 +36,7 @@ class SiteController extends Controller
         }
 
         $data = $request->except('_token');
-        $request->session()->flush();
-        //將表單資料用session()，先存起來
-        $request->session()->push('data',$data);
-        $datas = $request->session()->get('data');
-        dd($datas);
+        Order::create($data);
 
         $newebpay = new NewebPay();  //使用此物件要記得use
         $deposit=$request->deposit;
@@ -55,15 +51,10 @@ class SiteController extends Controller
     }
 
     public function successRedirect(Request $request){
-        $data = $request->session()->get('data');
-        dd($data);
-        if($data){
-          foreach ($data as $value) {
-              $data = $value;
-          }
-          Order::create($data);
-          $request->session()->flush();
-        }
+        (auth()->check())?($id = auth()->id()):'';
+
+        dd($id);
+
         return redirect()->route('root')->with('msg', '已成功下訂單，請至會員專區查看訂單狀態');
     }
 
@@ -73,7 +64,10 @@ class SiteController extends Controller
     }
 
       public function back(Request $request){
-        $request->session()->flush();
+        (auth()->check())?($id = auth()->id()):'';
+
+        dd($id);
+
         return redirect()->route('root')->with('msg', '訂單取消!!');
     }
 }
